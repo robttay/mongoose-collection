@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+</head>
+
+<body>
+
+    <h1>Album Collection</h1>
+    <div class="album">
+{{#albums}}
+<ul>
+<h3>Album:&nbsp;{{name}}</h3>
+<li>{{artist}}</li>
+<li>{{releaseDate}}</li>
+<li>{{label}}</li>
+<li>{{genre}}</li>
+<li>{{#single}}</li>
+<h3>Favorite Single</h3>
+<li>{{title}}</li>
+<li>{{track}}</li>
+{{/single}}
+</ul>
+<button type="submit" formaction="/edit/{{id}}" formmethod="post">Edit</button>
+</div>
+
+{{/albums}}
+</body>
+
+</html>
