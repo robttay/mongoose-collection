@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update</title>
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+</head>
+
+<body>
+<section class="update-container">
+
+
+ <div>
+{{#album}}
+Album:&nbsp;{{name}}<br>
+        Artist:&nbsp;{{artist}}<br>
+        Release Year:&nbsp;{{releaseDate}}<br>
+        Label:&nbsp;{{label}}<br>
+        Genre:&nbsp;{{genre}}<br>
+        
+        {{#single}}
+        Favorite Single:
+        <ul>
+            <li>Title:&nbsp;{{title}}</li>
+            <li>Track:&nbsp;{{track}}</li>
+        {{/single}}
+        </ul>
+   {{/album}}
+   <br>
+    <a href="/">Back To Album Collection</a>
+</div>
+<br>
+</section>
+</body>
+
+</html>

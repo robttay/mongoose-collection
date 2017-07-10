@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Add</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
+<section class="container">
+<a href="/">Back To Album Collection</a>
 
     <form action="/create" method="post">
 
@@ -17,7 +20,7 @@
         Release Year: <input type="number" name="releaseDate" min="1933" max="2017"> *<br>
         Label: <input type="text" name="label"><br>
         Genre:&nbsp;
-        <input type="radio" name="genre" value="other" checked>Other&nbsp;
+        <input type="radio" name="genre" value="Other" checked>Other&nbsp;
         <input type="radio" name="genre" value="Rock">Rock&nbsp;
         <input type="radio" name="genre" value="Jazz">Jazz&nbsp;
         <input type="radio" name="genre" value="Blues">Blues&nbsp;
@@ -30,8 +33,8 @@
             <li>Title&nbsp;<input type="text" name="single"></li>
             <li>Track&nbsp;<input type="number" name="single" min="1" max="60" placeholder="#"></li>
         </ul>
-        <input type="submit" value="Submit">&nbsp;&nbsp;&nbsp;
+        <input type="submit" value="Submit" class="button">&nbsp;&nbsp;&nbsp;
         * = required input
     </form>
-
+</section>
 </html>

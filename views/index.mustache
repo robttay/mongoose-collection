@@ -12,25 +12,32 @@
 
 <body>
 
-    <h1>Album Collection</h1>
+<section class="container">
+<span><img src="vinyl.jpeg">
+<h1>Album Collection</h1>
+<a href="/add" id="add-album">add-an-album</a></span>
+ {{#albums}}
     <div class="album">
-{{#albums}}
-<ul>
-<h3>Album:&nbsp;{{name}}</h3>
-<li>{{artist}}</li>
-<li>{{releaseDate}}</li>
-<li>{{label}}</li>
-<li>{{genre}}</li>
-<li>{{#single}}</li>
-<h3>Favorite Single</h3>
-<li>{{title}}</li>
-<li>{{track}}</li>
-{{/single}}
-</ul>
-<button type="submit" formaction="/edit/{{id}}" formmethod="post">Edit</button>
-</div>
-
+    <p>Album:&nbsp;{{name}}</p>
+    <p>Artist:&nbsp;{{artist}}</p>
+    <p>Release Date:&nbsp;{{releaseDate}}</p>
+    <p>Label:&nbsp;{{label}}</p>
+    <p>Genre:&nbsp;{{genre}}</p>
+        {{#single}}
+        <p>Favorite Single:&nbsp;&nbsp;</p>
+       <p> Title:&nbsp;{{title}}&nbsp;</p>
+        <p>Track:&nbsp;{{track}}
+        {{/single}}</p>
+  <form action="/edit/{{id}}" method="get">
+    <input type="submit" value="Edit" class="button">
+    </form>
+    <form action="/delete/{{id}}" method="post">
+    <input type="submit" value="Delete" class="button">
+    </form>
+    </div>
 {{/albums}}
+</section>
+
 </body>
 
 </html>

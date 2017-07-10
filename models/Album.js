@@ -20,7 +20,7 @@ var albumSchema = new Schema({
   genre: {
     type: String,
     default: "unknown",
-    enum: ["Rock", "Jazz", "Blues", "Hip-Hop", "Country", "unknown"]
+    enum: ["Rock", "Jazz", "Blues", "Hip-Hop", "Country", "Other"]
   },
   single: [
     {

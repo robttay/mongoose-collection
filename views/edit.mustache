@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit</title>
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+</head>
+
+<body>
+
+ <h1>Edit Album </h1>
+ <a href="/">Back To Album Collection</a>
+ {{#album}}
+<form action="/update/{{id}}" method="post">
+Album: <input type="text" name="name" value="{{name}}"> *<br>
+        Artist: <input type="text" name="artist" value="{{artist}}"> *<br>
+        Release Year: <input type="number" name="releaseDate" min="1933" max="2017" value="{{releaseDate}}"> *<br>
+        Label: <input type="text" name="label" value="{{label}}"><br>
+        Genre: <input type="text" name="genre" value="{{genre}}">
+        <ul>
+        {{#single}}
+        Favorite Single:
+            <li>Title&nbsp;<input type="text" name="single" value="{{title}}"></li>
+            <li>Track&nbsp;<input type="number" name="single" value="{{track}}"></li>
+        {{/single}}
+        </ul>
+        <input type="submit" value="Edit" class="button">
+   {{/album}}
+</form><br>
+* = required input
+
+</body>
+
+</html>

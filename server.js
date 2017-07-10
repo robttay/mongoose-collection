@@ -19,17 +19,10 @@ mongoose.connect(dbURL).then(function(err, db) {
   if (err) {
     console.log("error", err);
   }
-  console.log("Connected to MOONGOOSE DB.");
+  console.log("Connected to albumdb.");
 });
 
 // ROUTES //
-// app.get("/", (req, res) => {
-//   res.render("index", {userName: name});
-// });
-
-app.get("/add", (req, res) => {
-  res.render("add");
-});
 
 app.get("/", (req, res) => {
   Album.find()
@@ -45,7 +38,6 @@ app.get("/add", (req, res) => {
   res.render("add");
 });
 
-// BUILD EDIT MUSTACHE PAGE WITH POPULATED INPUTS
 app.get("/edit/:id", (req, res) => {
   Album.findById(req.params.id)
     .then(foundAlbum => {
@@ -55,7 +47,6 @@ app.get("/edit/:id", (req, res) => {
       res.status(500).send(err);
     });
 });
-// ////////////////////////////////////////////
 
 app.post("/create", (req, res) => {
   let albumData = req.body;
@@ -67,7 +58,32 @@ app.post("/create", (req, res) => {
   newAlbum
     .save()
     .then(savedAlbum => {
-      res.render("index", { albums: foundAlbums });
+      res.render("edit", { album: savedAlbum });
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+});
+
+app.post("/update/:id", (req, res) => {
+  let albumData = req.body;
+  let newObj = { title: albumData.single[0], track: albumData.single[1] };
+  albumData.single = [newObj];
+  let newAlbum = new Album(albumData);
+  console.log("newAlbum: ", newAlbum);
+  Album.updateOne({ _id: req.params.id }, req.body)
+    .then(updatedAlbum => {
+      res.render("update", { album: newAlbum });
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+});
+
+app.post("/delete/:id", (req, res) => {
+  Album.deleteOne({ _id: req.params.id })
+    .then(() => {
+      res.redirect("/");
     })
     .catch(err => {
       res.status(500).send(err);
